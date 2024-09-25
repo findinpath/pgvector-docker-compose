@@ -3,6 +3,12 @@ Trino pgvector similarity search demo
 
 ## Setup
 
+Spin up the containers
+
+```
+docker compose up
+```
+
 Setup Postgres
 
 ```
