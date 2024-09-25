@@ -1,0 +1,27 @@
+version: '3.7'
+services:
+  trino:
+    image: 'trinodb/trino:454'
+    hostname: trino
+    ports:
+      - '8080:8080'
+    volumes:
+      - ./etc:/etc/trino
+    networks:
+      - trino-network
+
+  pgvector:
+    image: 'pgvector/pgvector:0.7.2-pg16'
+    hostname: pgvector
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_DB: tpch
+      POSTGRES_USER: test
+      POSTGRES_PASSWORD: test
+    networks:
+      - trino-network
+
+networks:
+  trino-network:
+    driver: bridge
